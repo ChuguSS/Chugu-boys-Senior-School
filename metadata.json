@@ -1,0 +1,8 @@
+{
+  "name": "Chugu Boys Senior School",
+  "description": "Official institutional website and content management portal for Chugu Boys Senior School (Est. 1972) in Meru County, Kenya. Strive to Excel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

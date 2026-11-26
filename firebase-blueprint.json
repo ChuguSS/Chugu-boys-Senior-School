@@ -1,0 +1,269 @@
+{
+  "entities": {
+    "SchoolProfile": {
+      "title": "SchoolProfile",
+      "description": "Official institutional profile, leadership message, vision, mission, contact details, and homepage announcements for Chugu Boys Senior School.",
+      "type": "object",
+      "properties": {
+        "schoolName": { "type": "string", "minLength": 3, "maxLength": 120 },
+        "motto": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "established": { "type": "string", "minLength": 4, "maxLength": 20 },
+        "location": { "type": "string", "minLength": 3, "maxLength": 200 },
+        "postalAddress": { "type": "string", "minLength": 3, "maxLength": 120 },
+        "telephone": { "type": "string", "minLength": 5, "maxLength": 40 },
+        "email": { "type": "string", "minLength": 5, "maxLength": 120 },
+        "principalName": { "type": "string", "minLength": 2, "maxLength": 100 },
+        "schoolType": { "type": "string", "minLength": 3, "maxLength": 120 },
+        "cluster": { "type": "string", "minLength": 1, "maxLength": 20 },
+        "educationSystem": { "type": "string", "minLength": 3, "maxLength": 120 },
+        "vision": { "type": "string", "minLength": 10, "maxLength": 600 },
+        "mission": { "type": "string", "minLength": 10, "maxLength": 1000 },
+        "principalWelcomeHeading": { "type": "string", "minLength": 5, "maxLength": 200 },
+        "principalWelcomeBody": { "type": "string", "minLength": 20, "maxLength": 5000 },
+        "admissionsOpen": { "type": "boolean" },
+        "admissionsBannerTitle": { "type": "string", "minLength": 3, "maxLength": 200 },
+        "admissionsBannerText": { "type": "string", "minLength": 5, "maxLength": 600 },
+        "historySummary": { "type": "string", "minLength": 20, "maxLength": 4000 },
+        "mapEmbedQuery": { "type": "string", "maxLength": 300 },
+        "facebookUrl": { "type": "string", "maxLength": 300 },
+        "youtubeUrl": { "type": "string", "maxLength": 300 },
+        "xUrl": { "type": "string", "maxLength": 300 },
+        "crestUrl": { "type": "string", "maxLength": 180000 },
+        "heroImageUrl": { "type": "string", "maxLength": 180000 },
+        "scienceLabImageUrl": { "type": "string", "maxLength": 180000 },
+        "ictLabImageUrl": { "type": "string", "maxLength": 180000 },
+        "sportsImageUrl": { "type": "string", "maxLength": 180000 },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "updatedBy": { "type": "string", "maxLength": 120 }
+      },
+      "required": [
+        "schoolName",
+        "motto",
+        "established",
+        "location",
+        "postalAddress",
+        "telephone",
+        "email",
+        "principalName",
+        "schoolType",
+        "cluster",
+        "educationSystem",
+        "vision",
+        "mission",
+        "principalWelcomeHeading",
+        "principalWelcomeBody",
+        "admissionsOpen",
+        "admissionsBannerTitle",
+        "admissionsBannerText",
+        "historySummary",
+        "updatedAt",
+        "updatedBy"
+      ]
+    },
+    "EditablePage": {
+      "title": "EditablePage",
+      "description": "Administrator-editable institutional page content block.",
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string", "minLength": 2, "maxLength": 64 },
+        "title": { "type": "string", "minLength": 2, "maxLength": 160 },
+        "subtitle": { "type": "string", "maxLength": 300 },
+        "body": { "type": "string", "minLength": 10, "maxLength": 8000 },
+        "verificationNote": { "type": "string", "maxLength": 500 },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "updatedBy": { "type": "string", "maxLength": 120 }
+      },
+      "required": ["slug", "title", "body", "updatedAt", "updatedBy"]
+    },
+    "LearningArea": {
+      "title": "LearningArea",
+      "description": "CBE learning area or subject offering with verification status.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 2, "maxLength": 100 },
+        "pathway": {
+          "type": "string",
+          "enum": ["Core", "STEM", "Social Sciences", "Technical & Applied"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["confirmed", "verification_required"]
+        },
+        "description": { "type": "string", "minLength": 5, "maxLength": 600 },
+        "sortOrder": { "type": "number" },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "pathway", "status", "description", "sortOrder", "authorUid", "createdAt", "updatedAt"]
+    },
+    "NewsItem": {
+      "title": "NewsItem",
+      "description": "School news, announcements, events, examination notices, and student achievements.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 3, "maxLength": 180 },
+        "category": {
+          "type": "string",
+          "enum": [
+            "School Announcement",
+            "Academic Update",
+            "Admissions Notice",
+            "Events & Calendar",
+            "Examination Notice",
+            "Student Achievement"
+          ]
+        },
+        "summary": { "type": "string", "minLength": 10, "maxLength": 400 },
+        "body": { "type": "string", "minLength": 10, "maxLength": 8000 },
+        "eventDate": { "type": "string", "maxLength": 40 },
+        "imageUrl": { "type": "string", "maxLength": 600000 },
+        "published": { "type": "boolean" },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "authorName": { "type": "string", "maxLength": 120 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "summary", "body", "published", "authorUid", "authorName", "createdAt", "updatedAt"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Categorized photograph for the school photo gallery.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 2, "maxLength": 140 },
+        "category": {
+          "type": "string",
+          "enum": [
+            "School Environment",
+            "Classrooms & Laboratories",
+            "Academic Activities",
+            "Student Activities",
+            "Sports",
+            "Events & Celebrations",
+            "School Leadership & Visitors"
+          ]
+        },
+        "caption": { "type": "string", "minLength": 4, "maxLength": 400 },
+        "imageUrl": { "type": "string", "minLength": 5, "maxLength": 600000 },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "caption", "imageUrl", "authorUid", "createdAt", "updatedAt"]
+    },
+    "SchoolDocument": {
+      "title": "SchoolDocument",
+      "description": "Downloadable admissions form, circular, or official school guide.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 3, "maxLength": 160 },
+        "category": {
+          "type": "string",
+          "enum": ["Admission Form", "Fee Structure", "Academic Circular", "CBE Guide"]
+        },
+        "academicYear": { "type": "string", "minLength": 4, "maxLength": 20 },
+        "description": { "type": "string", "minLength": 5, "maxLength": 500 },
+        "fileName": { "type": "string", "minLength": 3, "maxLength": 120 },
+        "contentSummary": { "type": "string", "minLength": 10, "maxLength": 8000 },
+        "externalUrl": { "type": "string", "maxLength": 500 },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "academicYear", "description", "fileName", "contentSummary", "authorUid", "createdAt", "updatedAt"]
+    },
+    "Enquiry": {
+      "title": "Enquiry",
+      "description": "Parent, prospective learner, or stakeholder contact/admission enquiry.",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "email": { "type": "string", "minLength": 5, "maxLength": 140 },
+        "phone": { "type": "string", "minLength": 5, "maxLength": 40 },
+        "enquiryType": {
+          "type": "string",
+          "enum": ["Grade 10 Admission", "Academic Enquiry", "General Contact", "Campus Visit"]
+        },
+        "pathwayInterest": { "type": "string", "maxLength": 80 },
+        "message": { "type": "string", "minLength": 10, "maxLength": 2000 },
+        "status": {
+          "type": "string",
+          "enum": ["new", "reviewed", "responded"]
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["fullName", "email", "phone", "enquiryType", "message", "status", "createdAt", "updatedAt"]
+    },
+    "StaffRole": {
+      "title": "StaffRole",
+      "description": "Role-based access record for Principal and designated school teachers/editors.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 6, "maxLength": 128 },
+        "email": { "type": "string", "minLength": 5, "maxLength": 140 },
+        "displayName": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "role": { "type": "string", "enum": ["principal", "teacher", "editor"] },
+        "department": { "type": "string", "maxLength": 100 },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "displayName", "role", "active", "createdAt", "updatedAt"]
+    },
+    "StaffRequest": {
+      "title": "StaffRequest",
+      "description": "Access request submitted by a signed-in teacher awaiting Principal approval.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 6, "maxLength": 128 },
+        "email": { "type": "string", "minLength": 5, "maxLength": 140 },
+        "displayName": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "department": { "type": "string", "maxLength": 100 },
+        "status": { "type": "string", "enum": ["pending", "approved", "declined"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "displayName", "status", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/settings/{settingId}": {
+      "schema": { "$ref": "#/entities/SchoolProfile" },
+      "description": "Global school identity, Principal welcome message, vision, mission, and homepage announcements."
+    },
+    "/pages/{pageId}": {
+      "schema": { "$ref": "#/entities/EditablePage" },
+      "description": "Editable institutional page sections."
+    },
+    "/learning_areas/{areaId}": {
+      "schema": { "$ref": "#/entities/LearningArea" },
+      "description": "CBE learning areas and pathways."
+    },
+    "/news/{newsId}": {
+      "schema": { "$ref": "#/entities/NewsItem" },
+      "description": "School news, announcements, events, and examination notices."
+    },
+    "/gallery/{itemId}": {
+      "schema": { "$ref": "#/entities/GalleryItem" },
+      "description": "Categorized school photo gallery."
+    },
+    "/documents/{docId}": {
+      "schema": { "$ref": "#/entities/SchoolDocument" },
+      "description": "Downloadable admission forms and official school documents."
+    },
+    "/enquiries/{enquiryId}": {
+      "schema": { "$ref": "#/entities/Enquiry" },
+      "description": "Contact and admission enquiries containing parent PII."
+    },
+    "/staff_roles/{uid}": {
+      "schema": { "$ref": "#/entities/StaffRole" },
+      "description": "Role-based access assignments for Principal and designated teachers."
+    },
+    "/staff_requests/{uid}": {
+      "schema": { "$ref": "#/entities/StaffRequest" },
+      "description": "Teacher access requests awaiting Principal approval."
+    }
+  }
+}
